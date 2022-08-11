@@ -14,7 +14,8 @@ class resortController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $resorts = resort::all();
+        return view('home',['resorts'=>$resorts]);
     }
 
     /**

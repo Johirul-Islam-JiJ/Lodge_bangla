@@ -9,7 +9,7 @@
   <body>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-sm-6"> 
+            <div class="col-sm-4"> 
 
             <form action="" method="POST">
                 @csrf
@@ -43,7 +43,36 @@
 
             </div>
 
-            <div class="col-sm-6"> 
+            <div class="col-sm-8"> 
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach ($resorts as $rst)
+                    <tr>
+                        <th> {{$rst->id}} </th>
+                        <td> {{$rst->name}} </td>
+                        <td> {{$rst->address}} </td>
+                        <td> {{$rst->mobile}} </td>
+                        <td> {{$rst->email}} </td>
+                        <td>
+                            <a href="" class="btn btn-info btn-sm">Edit</a>
+                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
 
             </div>
 

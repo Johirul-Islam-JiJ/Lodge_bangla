@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-sm-4"> 
 
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name
@@ -37,6 +37,12 @@
                     <input type="email" class="form-control" id="email" name ="email">
                 </div>
 
+                <div class="mb-3">
+                    <label for="email" class="form-label">Image
+                    </label>
+                    <input type="file" class="form-control" id="image" name ="image">
+                </div>
+
                 <button type="submit" class="btn-btn-primary">Submit</button>
 
             </form>
@@ -53,6 +59,8 @@
                         <th scope="col">Address</th>
                         <th scope="col">Mobile</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Image</th>
+
                     </tr>
                 </thead>
 
@@ -64,6 +72,7 @@
                         <td> {{$rst->address}} </td>
                         <td> {{$rst->mobile}} </td>
                         <td> {{$rst->email}} </td>
+                        <td> {{$rst->image}} </td>
                         <td>
                             <a href="" class="btn btn-info btn-sm">Edit</a>
                             <a href="" class="btn btn-danger btn-sm">Delete</a>

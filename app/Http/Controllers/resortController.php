@@ -30,6 +30,7 @@ class resortController extends Controller
         $resort->address = $request->address;
         $resort->mobile = $request->mobile;
         $resort->email = $request->email;
+        $resort->image = $request->image;
         $resort->save();
         return redirect(route('index'));
 

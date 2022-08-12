@@ -46,6 +46,14 @@
                 <button type="submit" class="btn-btn-primary">Submit</button>
 
             </form>
+            @if(session()->has('status'))
+            <div class="alert alert-success">
+                {{session('status')}}
+            </div>
+
+            @endif
+
+
             </div>
 
         

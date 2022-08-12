@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-sm-4"> 
 
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="/" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name
@@ -46,8 +46,9 @@
                 <button type="submit" class="btn-btn-primary">Submit</button>
 
             </form>
-
             </div>
+
+        
 
             <div class="col-sm-8"> 
 
@@ -65,17 +66,20 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($resorts as $rst)
+                    @foreach ($resort as $rst)
                     <tr>
                         <th> {{$rst->id}} </th>
                         <td> {{$rst->name}} </td>
                         <td> {{$rst->address}} </td>
                         <td> {{$rst->mobile}} </td>
                         <td> {{$rst->email}} </td>
-                        <td> {{$rst->image}} </td>
                         <td>
-                            <a href="" class="btn btn-info btn-sm">Edit</a>
-                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                <img src="{{ $rst->image }}" width="80px" height="80px" alt=""
+                                class="img-fluid">
+                         </td>
+                        <td>
+                            <a href="{{url('/edit',$rst->id)}}" class="btn btn-info btn-sm">Edit</a>
+                            <a href="{{url('/delete',$rst->id)}}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     @endforeach

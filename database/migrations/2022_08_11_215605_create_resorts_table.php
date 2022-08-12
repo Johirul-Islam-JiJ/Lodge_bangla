@@ -19,6 +19,8 @@ class CreateResortsTable extends Migration
             $table->string('address');
             $table->bigInteger('mobile');
             $table->string('email');
+            $table->string('image');
+
 
             $table->timestamps();
         });

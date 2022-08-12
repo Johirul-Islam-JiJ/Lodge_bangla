@@ -16,3 +16,10 @@ use App\Http\Controllers\resortController;
 
 Route::get('/',[resortController::class,'index'])->name('index');
 Route::post('/',[resortController::class,'create'])->name('create');
+Route::get('/edit/{id}',[resortController::class,'edit'])->name('edit');
+Route::put('/edit/{id}',[resortController::class,'update'])->name('update');
+Route::get('/delete/{id}',[resortController::class,'destroy'])->name('destroy');
+
+
+
+// Route::get('/{id}',[resortController::class,'destroy'])->name('destroy');

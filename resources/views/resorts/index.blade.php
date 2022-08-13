@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-4"> 
 
-            <form action="/" method="POST" enctype="multipart/form-data">
+            <form action="{{route('resort.create')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name
@@ -80,8 +80,8 @@
                                 class="img-fluid">
                          </td>
                         <td>
-                            <a href="{{url('/edit',$rst->id)}}" class="btn btn-info btn-sm">Edit</a>
-                            <a href="{{url('/delete',$rst->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{route('resort.edit',$rst->id)}}" class="btn btn-info btn-sm">Edit</a>
+                            <a href="{{route('resort.destroy',$rst->id)}}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\resort;
+use Illuminate\Support\Facades\Storage;
 
 class resortController extends Controller
 {
@@ -40,7 +41,7 @@ class resortController extends Controller
             $valid['image'] = $request->file('image')->store('ResortImages', 'public');
 
         if(resort::create($valid));
-            return redirect(('/'))->with('status','Resort added successfully!!!');
+            return redirect(('resorts'))->with('status','Resort added successfully!!!');
         
 
         
@@ -134,7 +135,7 @@ class resortController extends Controller
             }
 
         if($resort->update($valid))
-            return back();
+            return redirect('resorts');
 
     }
 
@@ -149,7 +150,7 @@ class resortController extends Controller
         
         
         resort::destroy($id);
-        return redirect(route('index'))->with('status','Resort deleted successfully!!!');
+        return redirect(route('resort.index'))->with('status','Resort deleted successfully!!!');
         
         
         // $resort = resort::find($id);

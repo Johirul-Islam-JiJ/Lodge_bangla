@@ -47,7 +47,7 @@
                                 <a class="nav-link {{ Request::path() === '/' ? 'active' : '' }}" href="{{ url('/') }}">Homepage</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::path() === '/' ? 'active' : '' }}" href="{{ url('/') }}">Resost</a>
+                                <a class="nav-link {{ Request::path() === 'resorts' ? 'active' : '' }}" href="{{ route('resort.index') }}">Resort</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Booking</a>

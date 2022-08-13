@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\resortController;
-use App\Http\Controllers\HompageController;
+use App\Http\Controllers\HomePageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +15,16 @@ use App\Http\Controllers\HompageController;
 |
 */
 
-Route::get('/resorts',[resortController::class,'index'])->name('index');
-Route::post('/resorts/create',[resortController::class,'create'])->name('create');
-Route::get('resorts/edit/{id}',[resortController::class,'edit'])->name('edit');
-Route::post('resorts/edit/{id}',[resortController::class,'update'])->name('update');
-Route::get('resorts/delete/{id}',[resortController::class,'destroy'])->name('destroy');
+Route::get('/', HomePageController::class)->name('homepage');
+
+Route::get('/resorts',[resortController::class,'index'])->name('resort.index');
+Route::post('/resorts/create',[resortController::class,'create'])->name('resort.create');
+Route::get('resorts/edit/{id}',[resortController::class,'edit'])->name('resort.edit');
+Route::put('resorts/edit/{id}',[resortController::class,'update'])->name('resort.update');
+Route::get('resorts/delete/{id}',[resortController::class,'destroy'])->name('resort.destroy');
 
 
-Route::get('/',[HomepageController::class,'index'])->name('');
+
 
 
 // Route::get('/{id}',[resortController::class,'destroy'])->name('destroy');

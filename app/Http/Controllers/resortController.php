@@ -15,7 +15,7 @@ class resortController extends Controller
     public function index()
     {
         $resorts = resort::all();
-        return view('home',['resort'=>$resorts]);
+        return view('resorts.index',['resort'=>$resorts]);
         
     }
 
@@ -90,20 +90,7 @@ class resortController extends Controller
     {
         $resort = resort::find($id);
         return view('editform',['resort'=>$resort]);
-         $valid = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'mobile' => ['required'],
-            'email' => ['nullable','email', 'max:255'],
-            'image' => ['required','image','max:2048'],
-        ]);
-
-
-        if($request->hasFile('image'))
-            $valid['image'] = $request->file('image')->store('ResortImages', 'public');
-
-        if(resort::create($valid));
-            return redirect(('/'))->with('status','Resort Updated successfully!!!');
+    
     }
 
     /**
@@ -115,21 +102,39 @@ class resortController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $resort =resort::find($id);
+        // $resort =resort::find($id);
+        // $resort->name = $request->name;
+        // $resort->address = $request->address;
+        // $resort->mobile = $request->mobile;
+        // $resort->email = $request->email;
+        // $resort->image = $request->image;
+        // $resort->save();
+        // return redirect(route('index'));
+
+            
+
+
         $valid = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'mobile' => ['required'],
-            'email' => ['nullable','email', 'max:255'],
+            'email' => ['required','email', 'max:255'],
             'image' => ['required','image','max:2048'],
         ]);
 
 
-        if($request->hasFile('image'))
-            $valid['image'] = $request->file('image')->store('ResortImages', 'public');
+        $resort = resort::findOrFail($id);
 
-        if(resort::create($valid));
-            return redirect(('/'));
+        if($request->hasFile('image'))
+            {
+                if (Storage::disk('public')->exists($resort->getRawOriginal('image')))
+                    Storage::disk('public')->delete($resort->getRawOriginal('image'));
+
+                $valid['image'] = $request->file('image')->store('ResortImages', 'public');
+            }
+
+        if($resort->update($valid))
+            return back();
 
     }
 
